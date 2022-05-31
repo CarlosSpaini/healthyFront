@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "healthysoft-ea6c0": {
+      "hosting": {
+        "healthyFront": [
+          "healthysoft-ea6c0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "healthysoft-ea6c0"
+  }
+}
