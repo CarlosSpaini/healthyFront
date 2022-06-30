@@ -5,7 +5,8 @@
 
 <div class="row">
   <div class="col text-right">
-    <button routerLink="/heroe/nuevo"
+    <button [routerLink]="['/add']"
+          routerLinkActive="active"
             class="btn btn-primary">
       <i class="fa fa-plus"></i>
       Agregar
@@ -35,12 +36,12 @@
        <td>
  
          <button class="btn btn-info mr-1"
-                 [routerLink]="['/heroe', c.id ]">
+                 [routerLink]="['/add/', c.id ]">
            <i class="fa fa-pen"></i>
          </button>
  
          <button class="btn btn-danger"
-                 (click)="eliminarCliente( c, i ) ">
+                 (click)="eliminarCliente( c.id ) ">
            <i class="fa fa-trash"></i>
          </button>
  

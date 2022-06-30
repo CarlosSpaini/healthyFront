@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Cliente } from 'src/app/entities/cliente';
+import { Router } from '@angular/router';
+import Swal, { SweetAlertResult } from 'sweetalert2';
 
 
 @Component({
@@ -14,20 +16,36 @@ export class ClientesComponent implements OnInit {
   itemsCollection: AngularFirestoreCollection<Cliente>;
   clientes: Observable<Cliente[]>;
 
-  constructor(private afs: AngularFirestore) { 
+  constructor(private afs: AngularFirestore, private router: Router) { 
     this.itemsCollection = afs.collection<Cliente>('clientes');
-    setTimeout(()=>{
-      this.clientes = this.itemsCollection.valueChanges();
-    }, 3000)
-    
+    this.clientes = this.itemsCollection.valueChanges({ idField: 'id' });
   }
 
   ngOnInit(): void {
 
   }
 
-  eliminarCliente(cliente: Cliente, index: number){
+  eliminarCliente(id: String){
+    this.afs.doc('clientes/' + id).delete().then(()=>{
+      Swal.fire(
+        '',
+        'Se eliiminó correctamente',
+        'success'
+      )
+      
+    }).catch(()=>{
+      Swal.fire({
+        title: 'Error al editar',
+        text: 'Ocurrió un error',
+        icon: 'error'
+      })
+    }).then(( _ ) => {
+      this.router.navigate(['clientes']);
+    })
+  }
 
+  agregarCliente(){
+    
   }
 
 }

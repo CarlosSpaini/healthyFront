@@ -6,6 +6,7 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { InscripcionComponent } from './componentes/inscripcion/inscripcion.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AngularFireAuthGuard ,redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { PreciosComponent } from './componentes/precios/precios.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -14,15 +15,20 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'agregar-cliente', component: AgregarClienteComponent,
-    canActivate: [AngularFireAuthGuard]
+    path: 'add/:id', component: AgregarClienteComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'add', component: AgregarClienteComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'clientes', component: ClientesComponent,
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'inscripcion', component: InscripcionComponent
+    path: 'inscripciones', component: PreciosComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'main', component: AgmainComponent,

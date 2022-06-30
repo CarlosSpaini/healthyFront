@@ -29,6 +29,7 @@ import { AgregarClienteComponent } from './componentes/agregar-cliente/agregar-c
 import { AgmainComponent } from './componentes/agmain/agmain.component';
 import { InscripcionComponent } from './componentes/inscripcion/inscripcion.component';
 import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { PreciosComponent } from './componentes/precios/precios.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
     AgregarClienteComponent,
     AgmainComponent,
     InscripcionComponent,
-    ClientesComponent
+    ClientesComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,
